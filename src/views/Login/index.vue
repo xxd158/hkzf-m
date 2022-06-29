@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <!-- 一级路由 -->
-    <router-view></router-view>
-  </div>
+  <div>登录页面</div>
 </template>
 
 <script>
