@@ -17,7 +17,7 @@ const routes = [
     component: LayOut,
     redirect: '/shouye',
     children: [
-      { path: '/my', component: My },
+      { path: '/my', component: My, name: 'my' },
       { path: '/shouye', component: ShouYe },
       { path: '/zhaofang', component: ZhaoFang },
       { path: '/zixun', component: ZiXun }
