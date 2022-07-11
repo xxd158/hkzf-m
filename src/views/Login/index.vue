@@ -66,7 +66,7 @@ export default {
 <style scoped lang='less'>
 /deep/.van-field__control {
   padding: 10px 0;
-  height: 100px;
+  height: 60px;
   border-bottom: 1px solid #ddd;
 }
 </style>
