@@ -8,6 +8,7 @@ const My = () => import('@/views/My')
 const ShouYe = () => import('@/views/ShouYe')
 const ZhaoFang = () => import('@/views/ZhaoFang')
 const ZiXun = () => import('@/views/ZiXun')
+const CityList = () => import('@/views/CityList')
 Vue.use(VueRouter)
 
 const routes = [
@@ -23,7 +24,8 @@ const routes = [
       { path: '/zixun', component: ZiXun }
     ]
   },
-  { path: '/login', component: Login }
+  { path: '/login', component: Login },
+  { path: '/city', component: CityList, name: 'CityList' }
 ]
 
 const router = new VueRouter({
