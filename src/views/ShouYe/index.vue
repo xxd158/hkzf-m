@@ -3,7 +3,8 @@
     <div class="navBar-container">
       <van-nav-bar class="navBar" left-text="返回" @click-left="onClickLeft">
         <template #left>
-          北京&nbsp;<van-icon name="arrow-down" size="12" color="#7f7f80" />
+          <span>{{ $store.state.currentCity }}</span
+          >&nbsp;<van-icon name="arrow-down" size="12" color="#7f7f80" />
         </template>
         <template #title>
           <van-button type="default" icon="search">请输入小区或地址</van-button>
@@ -14,9 +15,9 @@
 
     <div class="swip-container">
       <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-        <van-swipe-item><img src="@/assets/1.png" alt="" /></van-swipe-item>
-        <van-swipe-item><img src="@/assets/2.png" alt="" /></van-swipe-item>
-        <van-swipe-item><img src="@/assets/3.png" alt="" /></van-swipe-item>
+        <van-swipe-item v-for="item in imgData" :key="item.id"
+          ><img :src="baseURL + item.imgSrc" alt=""
+        /></van-swipe-item>
       </van-swipe>
     </div>
 
@@ -86,13 +87,27 @@
 </template>
 
 <script>
+import { getSwipe } from '@/api/shouye.js'
 export default {
-  created () { },
+  created () {
+    this.getSwipe()
+  },
   data () {
     return {
+      imgData: [],
+      baseURL: 'http://liufusong.top:8080'
     }
   },
   methods: {
+    async getSwipe () {
+      try {
+        const resSwipe = await getSwipe()
+        // console.log(resSwipe.data.body)
+        this.imgData = resSwipe.data.body
+      } catch (error) {
+        console.log(error)
+      }
+    },
     onClickLeft () {
       this.$router.push({ name: 'CityList' })
     }

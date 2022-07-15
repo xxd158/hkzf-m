@@ -9,13 +9,17 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    logintoken: {}
+    logintoken: {},
+    currentCity: '北京'
   },
   getters: {
   },
   mutations: {
     setToken (state, payload) {
       state.logintoken = payload
+    },
+    setcurrentCity (state, payload) {
+      state.currentCity = payload
     }
   },
   actions: {
